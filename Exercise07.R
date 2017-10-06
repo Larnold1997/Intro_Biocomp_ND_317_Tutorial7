@@ -1,4 +1,4 @@
-#Problem 1
+#######Problem 1
 
 #Initializing Data vectors to empty
 sequenceID <- NULL
@@ -55,3 +55,47 @@ length.hist
 GC.hist <- ggplot(data = DNA.dat, aes(percentCG))
 GC.hist = GC.hist + geom_histogram(binwidth = 5) + coord_cartesian()  
 GC.hist
+
+
+
+#######Problem 3
+
+#Read Data into Table
+data3 <- read.table(file = "data.txt", header = TRUE, sep=",")
+
+#Initialize Values to 0
+north.total <- 0
+south.total <- 0
+east.total  <- 0
+west.total  <- 0
+north.counter <- 0
+south.counter <- 0
+east.counter  <- 0
+west.counter  <- 0
+
+#Go through data and add to appopriate region
+for (i in 1:nrow(data3)){
+  if (data3[i,1] == "north"){
+    north.total = north.total + data3[i,2]
+    north.counter = north.counter + 1
+  }
+  else if (data3[i,1] == "south"){
+    south.total =  south.total + data3[i,2]
+    south.counter = south.counter + 1
+  }
+  else if (data3[i,1] == "east"){
+    east.total = east.total + data3[i,2]
+    east.counter = east.counter + 1
+  }
+  else if (data3[i,1] == "west"){
+    west.total = west.total + data3[i,2]
+    west.counter = west.counter + 1
+  }
+  
+}
+
+#Compute Averages
+north.average <- north.total/north.counter
+south.average <- south.total/south.counter
+east.average  <- east.total/east.counter
+west.average  <- west.total/west.counter
