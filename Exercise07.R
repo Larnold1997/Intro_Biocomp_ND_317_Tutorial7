@@ -57,6 +57,23 @@ GC.hist = GC.hist + geom_histogram(binwidth = 5) + coord_cartesian()
 GC.hist
 
 
+#######Problem 2
+library(ggplot2)
+library(grid)
+
+#read the data file
+data2 <- read.table(file = "baseball2011_Win&HR.txt", header = TRUE, sep="\t")
+
+#plot the proportion of wins as a function of HRs
+a = ggplot(data = data2, aes(x = HR , y = Win))
+a = a + geom_point() + coord_cartesian() + theme_bw() + xlab("Homeruns") + ylab("Win Percentage")
+
+#adding in the trend line
+a = a + geom_point() + coord_cartesian() + theme_bw() + xlab("Homeruns") + ylab("Win Percentage") + stat_smooth(method = "lm")
+
+
+
+
 #######Problem 3
 
 #Read Data into Table
