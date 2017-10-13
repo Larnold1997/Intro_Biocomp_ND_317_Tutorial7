@@ -57,11 +57,11 @@ GC.hist = GC.hist + geom_histogram(binwidth = 5) + coord_cartesian()
 GC.hist
 
 
-
 #######Problem 3
 
 #Read Data into Table
 data3 <- read.table(file = "data.txt", header = TRUE, sep=",")
+attach(data3)
 
 #Initialize Values to 0
 north.total <- 0
@@ -99,3 +99,18 @@ north.average <- north.total/north.counter
 south.average <- south.total/south.counter
 east.average  <- east.total/east.counter
 west.average  <- west.total/west.counter
+averages <- c(north.average, south.average, east.average, west.average)
+averages <- data.frame(averages)
+
+
+#Bar Graph of Means
+mean.bar <- ggplot(data = averages, aes(averages))
+mean.bar = mean.bar + geom_bar() + coord_cartesian()  
+mean.bar
+
+#Scatter Plot of all Observations
+scatter.observations <- ggplot(data = data3, aes(as.factor(region), observations))
+scatter.observations = scatter.observations + geom_jitter() + coord_cartesian()
+scatter.observations  
+
+##The bar graph and scatter plot tell very different stories. Some of the regions have observations with little variance, while others have very large variance. This is only captured by the scatterplot. 
