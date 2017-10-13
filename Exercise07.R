@@ -113,4 +113,6 @@ scatter.observations <- ggplot(data = data3, aes(as.factor(region), observations
 scatter.observations = scatter.observations + geom_jitter() + coord_cartesian()
 scatter.observations  
 
-##The bar graph and scatter plot tell very different stories. Some of the regions have observations with little variance, while others have very large variance. This is only captured by the scatterplot. 
+##The bar graph and scatter plot tell very different stories. 
+#Some of the regions have observations with little variance, while others have very large variance. 
+#This is only captured by the scatterplot. 
